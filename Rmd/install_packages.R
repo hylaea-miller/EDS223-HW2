@@ -1,0 +1,9 @@
+install.packages(c("janitor",
+                   "here",
+                   "tmap",
+                   "sf",
+                   "sp",
+                   "dplyr",
+                   "ggplot2",
+                   "patchwork",
+                   "gt"))
