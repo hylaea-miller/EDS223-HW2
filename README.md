@@ -14,18 +14,24 @@ For this assignment, I practiced manipulating vector and raster data to build ma
 
 The Project directory contains:
 
-- README.md
-- HW2.pdf\
-- HW2.qmd
-- data/ejscreen gbif-birds-LA Mapping-inequality (Raw data)
-- Rmd/install.packages.R
+```         
+EDS223-HW2
+│   README.md
+│   HW2.pdf
+│   HW2.qmd
+│   Rmd
+│   └───install_packages.R
+│
+└───.gitignore
+     └───data
+         └───ejscreen
+         └───gbif-birds-LA
+         └───mapping-inequality
+```
 
 ## Data Access
 
-You can find the datasets used in this project it here: 
-- [EJScreen: Environmental Justice Screening and Mapping Tool](https://pedp-ejscreen.azurewebsites.net/)
-- [Mapping Inequality](https://dsl.richmond.edu/panorama/redlining/data).
-- [Biodiversity observations](https://www.gbif.org/dataset/search)
+You can find the datasets used in this project it here: - [EJScreen: Environmental Justice Screening and Mapping Tool](https://pedp-ejscreen.azurewebsites.net/) - [Mapping Inequality](https://dsl.richmond.edu/panorama/redlining/data). - [Biodiversity observations](https://www.gbif.org/dataset/search)
 
 ## How to Run
 
@@ -43,10 +49,10 @@ Hylaea Miller
 
 # Acknowledgements
 
-EJScreen. Azurewebsites.net. https://pedp-ejscreen.azurewebsites.net/
+EJScreen. Azurewebsites.net. <https://pedp-ejscreen.azurewebsites.net/>
 
-GBIF - Global Biodiversity Information Facility. (2025). Gbif.org. https://www.gbif.org/dataset/search
+GBIF - Global Biodiversity Information Facility. (2025). Gbif.org. <https://www.gbif.org/dataset/search>
 
-Mapping Inequality. (2025). Richmond.edu. https://dsl.richmond.edu/panorama/redlining/data
+Mapping Inequality. (2025). Richmond.edu. <https://dsl.richmond.edu/panorama/redlining/data>
 
-Ellis-Soto, D., Chapman, M., & Locke, D. H. (2022, June 9). Uneven biodiversity sampling across redlined urban areas in the United States. Ecoevorxiv.org; EcoEvoRxiv. https://ecoevorxiv.org/repository/view/3736/
+Ellis-Soto, D., Chapman, M., & Locke, D. H. (2022, June 9). Uneven biodiversity sampling across redlined urban areas in the United States. Ecoevorxiv.org; EcoEvoRxiv. <https://ecoevorxiv.org/repository/view/3736/>
