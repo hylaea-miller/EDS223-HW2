@@ -40,3 +40,13 @@ Render the document to generate the analysis and maps in PDF format.
 ## Author
 
 Hylaea Miller
+
+# Acknowledgements
+
+EJScreen. Azurewebsites.net. https://pedp-ejscreen.azurewebsites.net/
+
+GBIF - Global Biodiversity Information Facility. (2025). Gbif.org. https://www.gbif.org/dataset/search
+
+Mapping Inequality. (2025). Richmond.edu. https://dsl.richmond.edu/panorama/redlining/data
+
+Ellis-Soto, D., Chapman, M., & Locke, D. H. (2022, June 9). Uneven biodiversity sampling across redlined urban areas in the United States. Ecoevorxiv.org; EcoEvoRxiv. https://ecoevorxiv.org/repository/view/3736/
