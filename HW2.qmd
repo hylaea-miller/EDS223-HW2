@@ -11,11 +11,11 @@ execute:
 
 ## Background
 
-This assignment is part of the course EDS 223: Geospatial Analysis & Remote Sensing, which aims to explore patterns of environmental justice, with focus on: 
+This assignment is part of the course EDS 223: Geospatial Analysis & Remote Sensing, which aims to explore patterns of environmental justice, with focus on:
 
-- Practicing manipulating vector and raster data to build multi-layer maps. 
-- Practicing making maps in R, specifically using tmap. 
-- Building effective, responsible, accessible and aesthetically-pleasing maps.
+-   Practicing manipulating vector and raster data to build multi-layer maps.
+-   Practicing making maps in R, specifically using tmap.
+-   Building effective, responsible, accessible and aesthetically-pleasing maps.
 
 ## Data
 
@@ -86,7 +86,6 @@ if(st_crs(ejscreen) != st_crs(map_ineq)){
 print(st_crs(ejscreen) == st_crs(map_ineq)) # True
 ```
 
-
 ## Subset Data
 
 Filter the EJScreen dataset for Los Angeles County.
@@ -100,7 +99,6 @@ la <- ejscreen %>%
 ## **Part 1: Legacy of redlining in current environmental (in)justice**
 
 ### 1. Create a map of historical redlining neighborhoods
-
 
 ```{r, fig.width=7, fig.height=9, out.width="90%"}
 
@@ -119,9 +117,10 @@ tm_shape(map_ineq) +
   tm_layout(inner.margins = c(0.01, 0.01, 0.01, 0.1),
             component.autoscale = FALSE)
 ```
+
 ### 2. Create a table summarizing:
 
-1. Check if the coordinate reference systems match and join the datasets using a spatial intersection.
+1.  Check if the coordinate reference systems match and join the datasets using a spatial intersection.
 
 ```{r}
 # Check if coordinate reference systems match and add a stop error
@@ -133,7 +132,7 @@ la_joined <- st_join(map_ineq, la, join = st_intersects)
 
 ```
 
-2. Calculate the percentage of census block groups that fall within each HOLC grade.
+2.  Calculate the percentage of census block groups that fall within each HOLC grade.
 
 ```{r}
 # Create a summary table with the percentage of census block within each HOLC grade
@@ -145,7 +144,8 @@ summary_table <- la_joined %>%
   st_drop_geometry()
 ```
 
-3. Customize the table using the gt package.
+3.  Customize the table using the gt package.
+
 ```{r}
 # Customize table with gt library   
 summary_table %>%
@@ -165,7 +165,8 @@ summary_table %>%
 -   percentile for Particulate Matter 2.5
 -   percentile for low life expectancy
 
-1. Group by HOLC grade and calculate the average for each variable we want to plot.
+1.  Group by HOLC grade and calculate the average for each variable we want to plot.
+
 ```{r}
 # Find the average values of the variables listed above within each HOLC grade
 la_mean <- la_joined %>%
@@ -178,7 +179,8 @@ la_mean <- la_joined %>%
 
 ```
 
-2. Plot the graph of "Average percentage of low-income population per HOLC grade in Los Angeles"
+2.  Plot the graph of "Average percentage of low-income population per HOLC grade in Los Angeles"
+
 ```{r}
 # Plot of the percentage of low-income population within HOLC grade
 ggplot(data = la_mean, aes(x = grade, y = lowincpct, fill = grade)) +
@@ -186,15 +188,17 @@ ggplot(data = la_mean, aes(x = grade, y = lowincpct, fill = grade)) +
   scale_fill_manual(values = c("A" = "#76a865", 
                                "B" = "#7cb5bd", 
                                "C" = "#ffff00", 
-                               "D" = "#d9838d")) +
+                               "D" = "#d9838d"),
+                    name = "HOLC Grade") +
   labs(title = "Average percentage of low-income population per HOLC 
                               grade in Los Angeles", 
        x = "HOLC Neighborhood Grade",      
-       y = "Low Income (%)") +
-  theme_minimal() +
-  theme(legend.position = "none")
+       y = "Low Income (%)")+
+  theme_minimal() 
+
 ```
-3. Plot the graph of "Average percentage of particulate matter 2.5 per HOLC grade in Los Angeles"
+
+3.  Plot the graph of "Average percentage of particulate matter 2.5 per HOLC grade in Los Angeles"
 
 ```{r}
 # Plot for PM_25 within HOLC grade
@@ -203,16 +207,18 @@ ggplot(data = la_mean, aes(x = grade, y = lowincpct, fill = grade)) +
   scale_fill_manual(values = c("A" = "#76a865", 
                                "B" = "#7cb5bd", 
                                "C" = "#ffff00", 
-                               "D" = "#d9838d"), ) +
+                               "D" = "#d9838d"),
+                    name = "HOLC Grade") +
   labs(title = "Average percentage of particulate matter 2.5 per HOLC
                                grade in Los Angeles", 
        x = "HOLC Neighborhood Grade",      
        y = "Particulate Matter 2.5 (%)") +
-    theme_minimal() +
-    theme(legend.position = "none")
+    theme_minimal() 
 
 ```
-4. Plot the graph of "Average percentage of low life expectancy per HOLCngrade in Los Angeles"
+
+4.  Plot the graph of "Average percentage of low life expectancy per HOLC grade in Los Angeles"
+
 ```{r}
 # Plot for percentile of low life expectancy within HOLC grade
   ggplot(data = la_mean, aes(x = grade, y = lifeexppct , fill = grade)) +
@@ -220,13 +226,13 @@ ggplot(data = la_mean, aes(x = grade, y = lowincpct, fill = grade)) +
   scale_fill_manual(values = c("A" = "#76a865", 
                                "B" = "#7cb5bd", 
                                "C" = "#ffff00", 
-                               "D" = "#d9838d"), ) +
+                               "D" = "#d9838d"),
+                    name = "HOLC Grade") +
   labs(title = "Average percentage of low life expectancy per HOLC
                              grade in Los Angeles", 
        x = "HOLC Neighborhood Grade",      
        y = "low life expectancy (%)") +
-    theme_minimal() +
-    theme(legend.position = "none")
+    theme_minimal() 
 ```
 
 ### 4. Write a brief paragraph reflecting on these results
@@ -235,14 +241,14 @@ For every figure, the HOLC neighborhoods with the highest values were the D grad
 
 The second graph shows the average percentage of particulate matter 2.5, where the same pattern from the first figure can still be observed, though with a lower proportion. The grade D neighborhoods show the highest percentage of particulate matter 2.5. This result suggests possible environmental injustice, highlighting potential disproportionate exposure of the population within this grade to health risks.
 
-The third graph shows the average percentage of low life expectancy per grade. Grade D neighborhoods show the highest percentage of low life expectancy. The lower life expectancy in these areas can be associated with historically restricted public investment in healthcare and limited access to medical assistance, suggesting possible environmental injustice concerns and their effect on health inequality
-
+The third graph shows the average percentage of low life expectancy per grade. Grade D neighborhoods show the highest percentage of low life expectancy. The lower life expectancy in these areas can be associated with historically restricted public investment in healthcare and limited access to medical assistance, suggesting possible environmental injustice concerns and their effect on health inequality.
 
 ## **Part 2: Legacy of redlining in biodiversity observations**
 
 ### 1. A figure summarizing the percent of observations within redlined neighborhoods within each HOLC grade
 
 Transform and check if the coordinate reference systems match and join the datasets.
+
 ```{r}
 # Transform coordinates from dataset to match
 birds <- st_transform(birds, crs = st_crs(map_ineq))
@@ -264,11 +270,12 @@ summarize_birds <- birds_joined %>%
   group_by(grade) %>%
   summarise(count = n()) %>% 
   tidyr::drop_na() %>% 
-  mutate(percentage = (count / sum(count)) * 100)
+  mutate(percentage = (count / sum(count)) * 100) 
   
 ```
 
 Plot the graph of "Percent of bird observations per HOLC in Los Angeles"
+
 ```{r}
 # Plot for percentile of bird observations within HOLC grade
 ggplot(data = summarize_birds, aes(x = grade, y = percentage , fill = grade)) +
@@ -276,18 +283,17 @@ ggplot(data = summarize_birds, aes(x = grade, y = percentage , fill = grade)) +
   scale_fill_manual(values = c("A" = "#76a865", 
                                "B" = "#7cb5bd", 
                                "C" = "#ffff00", 
-                               "D" = "#d9838d"), ) +
-  labs(title = "Percent of bird observations 
-                  per HOLC in Los Angeles", 
+                               "D" = "#d9838d"),
+                    name = "HOLC Grade") +
+  labs(title = "Percent of bird observations per HOLC in Los Angeles", 
        x = "HOLC Neighborhood Grade",      
        y = "Bird Observations (%)") +
-    theme_minimal() +
-    theme(legend.position = "none")
-
+    theme_minimal() 
 ```
-### 2.  Our results don’t match the findings from Ellis-Soto et al. 2023! Read the abstract of the study. Why might we have obtained different results in our analysis? What did the paper consider that we did not?
 
-The paper states that the lowest bird observations are from the redlined neighborhoods, which differs from the results found here, where the B-grade neighborhoods have the lowest percentage of bird observations. One possible reason we might have obtained these different results is the influence of other variables not accounted for; for example, the population of people within each grade could affect the number of observations recorded. In the article, it is mentioned that the analyses accounted for present-day vegetation, open space, population density, and climate. They also used a much larger sample, including 195 metropolitan areas in the United States, compared with our results, which were calculated only as the percentage of bird observation counts per grade level in Los Angeles.
+### 2. Our results don’t match the findings from Ellis-Soto et al. 2023! Read the abstract of the study. Why might we have obtained different results in our analysis? What did the paper consider that we did not?
+
+The study states that the lowest bird observations are from the redlined neighborhoods, which differs from the results found here, where the B grade neighborhoods have the lowest percentage of bird observations. One possible reason we might have obtained these different results is the influence of other variables not accounted for, for example, the population of people within each grade could affect the number of observations recorded. In the article, it is mentioned that the analyses accounted for present-day vegetation, open space, population density, and climate. They also used a much larger sample, including 195 metropolitan areas in the United States, compared with our results, which were calculated only as the percentage of bird observation counts per grade level in Los Angeles.
 
 ## Acknowledgement
 
@@ -298,4 +304,3 @@ GBIF - Global Biodiversity Information Facility. (2025). Gbif.org. https://www.g
 Mapping Inequality. (2025). Richmond.edu. https://dsl.richmond.edu/panorama/redlining/data
 
 Ellis-Soto, D., Chapman, M., & Locke, D. H. (2022, June 9). Uneven biodiversity sampling across redlined urban areas in the United States. Ecoevorxiv.org; EcoEvoRxiv. https://ecoevorxiv.org/repository/view/3736/
-
